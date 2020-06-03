@@ -41,7 +41,9 @@ function PhotoDetail(props){
                                 </button>
                             </header>
                             <button className={styles.photoDetailClose} onClick={() => {window.history.back(); enableScroll();}}>X</button>
-                            <img onClick={() => {window.history.back(); enableScroll();}} className={styles.photoDetailImage} src={currentPhoto ? currentPhoto.urls.regular : null} alt="Изображение" />
+                            <span>
+                                <img onClick={() => {window.history.back(); enableScroll();}} className={styles.photoDetailImage} src={currentPhoto ? currentPhoto.urls.regular : null} alt="Изображение" />
+                            </span>
                             <footer className={styles.photoDetailFooter}>
                                 <div onClick={userProfileLink}>
                                     <span><img className={styles.fotoProfilePrev} src={currentPhoto ? currentPhoto.user.profile_image.small : noUser} alt="Фото профиля"/></span>
