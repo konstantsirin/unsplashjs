@@ -1,0 +1,27 @@
+.headerBlock {
+    margin: 0 auto;
+    text-align: center;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(236,235,242,1) 0%, rgba(174,173,245,1) 17%, rgba(166,166,184,1) 44%, rgba(120,120,226,1) 69%, rgba(0,212,255,1) 100%);
+}
+
+.headerLogo{
+    vertical-align: middle;
+    padding: 30px 50px 45px 0;
+}
+
+.headerText {
+    margin-left: 50px;
+    font-size: 30px;
+    vertical-align: middle;
+    font-weight: bold;
+    padding: 40px 0;
+    text-shadow: -5px -5px 0px black;
+    background: radial-gradient(#FFF 1px, transparent 1px);
+    background-size: 4px 4px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    margin: 20px auto;
+
+}

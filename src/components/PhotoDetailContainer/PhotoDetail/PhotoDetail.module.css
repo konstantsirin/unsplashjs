@@ -1,0 +1,175 @@
+.photoDetailContainerWrapper {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.75);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.photoDetailContainer {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+
+}
+
+.photoDetailWrapper {
+    cursor: zoom-out;
+}
+
+.photoDetailImage {
+    height: 80vh;
+
+}
+
+.photoDetailHeader {
+    display: block;
+    position: absolute;
+    right: 0;
+    margin: 10px 10px 0 0;
+}
+
+.likePhotoBtn {
+    padding: 3px;
+    color: #fff;
+    border: none;
+    text-align: center;
+    outline: none;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.likeImg {
+    vertical-align: middle;
+    opacity: 0.4;
+    transition: 0.5s;
+}
+
+.likeImg:hover {
+    opacity: 1;
+}
+
+.countLike {
+    padding-left: 10px;
+    vertical-align: middle;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.photoDetailFooter {
+    display: flex;
+    color: white;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 10px 10px 0 0;
+    padding: 10px;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.fotoProfilePrev {
+    border-radius: 100px;
+    height: 30px;
+    border: 1px solid white;
+    box-shadow: 0px 0px 1px black;
+    vertical-align: middle;
+}
+
+.persDataProfile {
+    display: inline-flex;
+    flex-direction: row;
+    vertical-align: middle;
+    margin-left: 10px;
+    align-items: flex-end;
+}
+
+.nameProfile {
+    padding-left: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.datePublish {
+    padding-left: 10px;
+    font-size: 12px;
+    font-weight: bold;
+
+}
+
+.photoDetailClose {
+    position: fixed;
+    right: -40px;
+    top: 5px;
+    border: 0;
+    background-color: transparent;
+    color: white;
+    font-size: 2em;
+}
+@media (max-width: 1300px) {
+    .photoDetailImage {
+        width: 60vh;
+        height: auto;
+    }
+
+    .photoDetailWrapper {
+        width: auto;
+    }
+}
+
+@media (max-width: 920px) {
+    .photoDetailImage {
+        width: 50vh;
+        height: auto;
+    }
+
+    .photoDetailWrapper {
+        width: auto;
+    }
+    .photoDetailContainer {
+        width: 50vh;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .photoDetailImage {
+        width: 100%;
+        height: auto;
+    }
+
+    .photoDetailWrapper {
+        width: 100%;
+    }
+    .photoDetailContainer {
+        width: 100%;
+        font-size: 8px !important;
+    }
+
+    .photoDetailClose {
+        right: 1em;
+        margin-top: 8px;
+    }
+    .photoDetailHeader {
+        right: 40px;
+        font-size: inherit;
+
+    }
+    .photoDetailFooter {
+        font-size: inherit;
+    }
+
+    .nameProfile,
+    .datePublish,
+    .countLike{
+        font-size: 12px;
+    }
+}
