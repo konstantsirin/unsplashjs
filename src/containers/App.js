@@ -4,10 +4,9 @@ import UnsplashAppContainer from "../components/UnsplashAppContainer/UnsplashApp
 import PhotoDetailContainer from "../components/PhotoDetailContainer/PhotoDetailContainer";
 import {unsplash} from '../API/unsplashApi.js';
 import { Route, Redirect, withRouter } from 'react-router-dom';
-
+import Preloader from "../components/Preloader/Preloader";
 
 function App() {
-    console.log(window.location);
     const code = window.location.search.split('code=')[1];
     if (code) {
             unsplash.auth.userAuthentication(code)
@@ -18,9 +17,9 @@ function App() {
                 });
             return (<Redirect to="/unsplashapp" />)
     }
-
     return (
         <div className="App">
+            <Preloader />
             <Route exact path="/">
                 <Redirect to="/auth" />
             </Route>

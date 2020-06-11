@@ -20,17 +20,7 @@
     margin-inline-end: 0;
     padding-inline-start: 0;
 }
-.loadBtn {
-    font-size: 18px;
-    margin-left: 30px;
-    padding: 10px 50px;
-    color: black;
-    background-color: #e6f772;
-    border: none;
-    border-radius: 5px;
-    vertical-align: middle;
-    margin: 30px;
-}
+
 
 @media (max-width: 960px) {
     .galleryContainer {

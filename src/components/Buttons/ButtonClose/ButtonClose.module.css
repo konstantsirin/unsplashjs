@@ -1,0 +1,16 @@
+.photoDetailClose {
+    position: fixed;
+    right: -40px;
+    top: 5px;
+    border: 0;
+    background-color: transparent;
+    color: white;
+    font-size: 2em;
+}
+
+@media (max-width: 600px) {
+    .photoDetailClose {
+        right: 1em;
+        margin-top: 8px;
+    }
+}

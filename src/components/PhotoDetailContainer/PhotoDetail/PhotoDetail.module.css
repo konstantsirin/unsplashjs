@@ -19,10 +19,6 @@
 
 }
 
-.photoDetailWrapper {
-    cursor: zoom-out;
-}
-
 .photoDetailImage {
     height: 80vh;
 
@@ -33,35 +29,6 @@
     position: absolute;
     right: 0;
     margin: 10px 10px 0 0;
-}
-
-.likePhotoBtn {
-    padding: 3px;
-    color: #fff;
-    border: none;
-    text-align: center;
-    outline: none;
-    text-decoration: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-.likeImg {
-    vertical-align: middle;
-    opacity: 0.4;
-    transition: 0.5s;
-}
-
-.likeImg:hover {
-    opacity: 1;
-}
-
-.countLike {
-    padding-left: 10px;
-    vertical-align: middle;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
 }
 
 .photoDetailFooter {
@@ -76,44 +43,7 @@
     cursor: pointer;
 }
 
-.fotoProfilePrev {
-    border-radius: 100px;
-    height: 30px;
-    border: 1px solid white;
-    box-shadow: 0px 0px 1px black;
-    vertical-align: middle;
-}
 
-.persDataProfile {
-    display: inline-flex;
-    flex-direction: row;
-    vertical-align: middle;
-    margin-left: 10px;
-    align-items: flex-end;
-}
-
-.nameProfile {
-    padding-left: 10px;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-.datePublish {
-    padding-left: 10px;
-    font-size: 12px;
-    font-weight: bold;
-
-}
-
-.photoDetailClose {
-    position: fixed;
-    right: -40px;
-    top: 5px;
-    border: 0;
-    background-color: transparent;
-    color: white;
-    font-size: 2em;
-}
 @media (max-width: 1300px) {
     .photoDetailImage {
         width: 60vh;
@@ -154,10 +84,6 @@
         font-size: 8px !important;
     }
 
-    .photoDetailClose {
-        right: 1em;
-        margin-top: 8px;
-    }
     .photoDetailHeader {
         right: 40px;
         font-size: inherit;
@@ -167,9 +93,4 @@
         font-size: inherit;
     }
 
-    .nameProfile,
-    .datePublish,
-    .countLike{
-        font-size: 12px;
-    }
 }

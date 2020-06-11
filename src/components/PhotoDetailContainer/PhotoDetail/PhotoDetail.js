@@ -1,74 +1,72 @@
 import React from 'react';
 import styles from './PhotoDetail.module.css';
-import notLike from '../../../assets/images/heart.svg';
-import noUser from '../../../assets/images/no_user.png';
-import {normalizeDate} from "../../../supportFunctions";
-import like from "../../../assets/images/heart_red.svg";
+import {disableScroll, returnToBackWindow, returnToBack} from "../../../supportFunctions";
 import {connect} from 'react-redux';
-import {setLike, disableLike} from "../../../actions/index";
+import {setLike, disableLike, enablePhotoDetailStatus, disablePhotoDetailStatus} from "../../../actions/index";
+import Like from "../../PhotoContent/Like/Like";
+import PhotoDescription from "../../PhotoContent/PhotoDescription/PhotoDescription";
+import ButtonClose from "../../Buttons/ButtonClose/ButtonClose";
 
-function PhotoDetail(props){
-    const {photo, setLike, disableLike} = props;
-    let currentPhoto = photo[0];
-    let userProfileLink = () => {window.open(currentPhoto.user.links.html, "_blank");};
-    let likeUnlikePhoto = (id) => {
-        currentPhoto.liked_by_user ? disableLike(id) : setLike(id);
+class PhotoDetail extends React.Component {
+
+    componentDidMount() {
+        const {enablePhotoDetailStatus} = this.props;
+        disableScroll();
+        enablePhotoDetailStatus();
+    };
+
+    componentDidUpdate() {
+        const {photoDetailStatus} = this.props;
+        returnToBackWindow(photoDetailStatus);
     }
 
-    let disableScroll = () => {
-        let x = window.scrollX;
-        let y = window.scrollY;
-        window.onscroll=function(){window.scrollTo(x, y);};
-    };
-    disableScroll();
+    componentWillUnmount() {
+        const {disablePhotoDetailStatus} = this.props;
+        disablePhotoDetailStatus();
+    }
 
-    let enableScroll = () => {
-        window.onscroll=function(){};
-    };
+    render() {
+        const {photo, setLike, disableLike} = this.props;
 
-    if (currentPhoto) {
-        currentPhoto = currentPhoto.photo;
-        return (<>
-                <div className={styles.photoDetailContainerWrapper}>
-                    <div className={styles.photoDetailContainer}>
-                        <div className={styles.photoDetailWrapper}>
-                            <header className={styles.photoDetailHeader}>
-                                <button className={styles.likePhotoBtn} >
-                                    <img className={styles.likeImg} src={currentPhoto.liked_by_user ? like :  notLike} onClick={() => likeUnlikePhoto(currentPhoto.id)} alt="like Button"/>
-                                    <span className={styles.countLike}>
-                                        {currentPhoto ? currentPhoto.likes : null}
-                                    </span>
-                                </button>
-                            </header>
-                            <button className={styles.photoDetailClose} onClick={() => {window.history.back(); enableScroll();}}>X</button>
-                            <span>
-                                <img onClick={() => {window.history.back(); enableScroll();}} className={styles.photoDetailImage} src={currentPhoto ? currentPhoto.urls.regular : null} alt="Изображение" />
-                            </span>
-                            <footer className={styles.photoDetailFooter}>
-                                <div onClick={userProfileLink}>
-                                    <span><img className={styles.fotoProfilePrev} src={currentPhoto ? currentPhoto.user.profile_image.small : noUser} alt="Фото профиля"/></span>
-                                    <div className={styles.persDataProfile}>
-                                        <span className={styles.nameProfile}>{currentPhoto ? currentPhoto.user.name : null}</span>
-                                        <span className={styles.datePublish}>{currentPhoto ? normalizeDate(currentPhoto.created_at) : null}</span>
-                                    </div>
-                                </div>
-                            </footer>
+        if (photo.length !== 0 ) {
+            let currentPhoto = photo[0].photo;
+            let userProfileLink = () => {window.open(currentPhoto.user.links.html, "_blank");};
+
+            return (<>
+                    <div onClick={() => {returnToBack()}} className={styles.photoDetailContainerWrapper}>
+                        <div  className={styles.photoDetailContainer} onClick={(event) => {event.stopPropagation();}}>
+                            <div className={styles.photoDetailWrapper}>
+                                <header className={styles.photoDetailHeader}>
+                                    <Like liked_by_user={currentPhoto.liked_by_user} id={currentPhoto.id} likes={currentPhoto.likes} setLike={setLike} disableLike={disableLike}/>
+                                </header>
+
+                                <ButtonClose />
+
+                                <span>
+                                    <img className={styles.photoDetailImage} src={currentPhoto ? currentPhoto.urls.regular : null} alt="Изображение" />
+                                </span>
+
+                                <footer className={styles.photoDetailFooter}>
+                                    <PhotoDescription userProfileLink={userProfileLink} userName={currentPhoto.user.name} photoCreated={currentPhoto.created_at} profileImageSmall={currentPhoto.user.profile_image.small}/>
+                                </footer>
+                            </div>
+
                         </div>
+                    </div>}
+                </>
+            );
+        } else {
+            return (<></>)
+        }
 
-                    </div>
-                </div>}
-            </>
-        );
-    } else {
-        return (<></>)
     }
-
 }
 
 const mapStateToProps = state => {
     return {
-        dataPhoto: state.photosPage.dataPhoto
+        dataPhoto: state.photosPage.dataPhoto,
+        photoDetailStatus: state.photosPage.photoDetailStatus,
     }
 }
 
-export default connect(mapStateToProps, {setLike, disableLike})(PhotoDetail);
+export default connect(mapStateToProps, {setLike, disableLike, enablePhotoDetailStatus, disablePhotoDetailStatus})(PhotoDetail);

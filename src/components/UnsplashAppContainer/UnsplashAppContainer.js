@@ -2,14 +2,16 @@ import React from 'react';
 import Header from "../Header/Header";
 import UnsplashAppItem from "./UnsplashAppItem/UnsplashAppItem";
 import styles from './UnsplashAppContainer.module.css';
-import {setPhoto} from "../../actions/index";
+import {setPhoto, toggleIsFetching} from "../../actions/index";
 import { unsplash } from '../../API/unsplashApi';
 import {connect} from "react-redux";
+import ButtonLoad from "../Buttons/ButtonLoad/ButtonLoad";
+
 
 class UnsplashAppContainer extends React.Component {
 
     componentDidMount() {
-        const { currentPage, setPhoto } = this.props;
+        const { currentPage, setPhoto} = this.props;
         unsplash.auth.setBearerToken(localStorage.getItem('token'));
         setPhoto(currentPage);
     };
@@ -17,7 +19,7 @@ class UnsplashAppContainer extends React.Component {
 
 
     render() {
-        const {dataPhoto, currentPage, setPhoto} = this.props;
+        const {dataPhoto, isFetching, currentPage, setPhoto} = this.props;
         let id = 0;
         window.onscroll = () => {
             var clientHeight = document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight;
@@ -25,12 +27,9 @@ class UnsplashAppContainer extends React.Component {
             var scrollTop = window.pageYOffset ? window.pageYOffset : (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
 
             if((documentHeight - clientHeight) <= scrollTop) {
-                console.log('Достигнут конец документа. Загружаю дополнительный контент.');
                 setPhoto(currentPage);
             }
         };
-
-
 
             return (
                 <>
@@ -39,7 +38,7 @@ class UnsplashAppContainer extends React.Component {
                     <ul className={styles.galleryList}>
                         {dataPhoto ? dataPhoto.map(photo => <UnsplashAppItem key={++id} photo={photo}/>) : ''}
                     </ul>
-                    <button className={styles.loadBtn} onClick={(ev) => {setPhoto(currentPage);}}>ЕЩЕ ФОТО</button>
+                    <ButtonLoad />
                 </div>
                 </>
             )
@@ -51,8 +50,9 @@ class UnsplashAppContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         dataPhoto: state.photosPage.dataPhoto,
-        currentPage: state.photosPage.currentPage
+        currentPage: state.photosPage.currentPage,
+        isFetching: state.photosPage.isFetching
     }
 };
 
-export default connect(mapStateToProps, {setPhoto})(UnsplashAppContainer);
+export default connect(mapStateToProps, {setPhoto, toggleIsFetching})(UnsplashAppContainer);
