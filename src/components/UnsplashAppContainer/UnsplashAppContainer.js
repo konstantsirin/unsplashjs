@@ -19,7 +19,7 @@ class UnsplashAppContainer extends React.Component {
 
 
     render() {
-        const {dataPhoto, isFetching, currentPage, setPhoto} = this.props;
+        const {dataPhoto, currentPage, setPhoto} = this.props;
         let id = 0;
         window.onscroll = () => {
             var clientHeight = document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight;
@@ -51,7 +51,6 @@ const mapStateToProps = (state) => {
     return {
         dataPhoto: state.photosPage.dataPhoto,
         currentPage: state.photosPage.currentPage,
-        isFetching: state.photosPage.isFetching
     }
 };
 

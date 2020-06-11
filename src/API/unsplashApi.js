@@ -1,6 +1,5 @@
 import Unsplash from 'unsplash-js';
 
-//const URL = "http://localhost:3000/";
 const URL = "http://web-dev-page.ru/";
 
 export const unsplash = new Unsplash({
