@@ -1,4 +1,6 @@
-let initialState = {
+import {SET_PHOTO, TOGGLE_IS_FETCHING, TOGGLE_LIKE, TOGGLE_IS_PHOTO_DETAIL_STATUS} from '../global/constants/constants.js';
+
+const initialState = {
         dataPhoto : [],
         currentPage: 1,
         isFetching : false,
@@ -8,7 +10,7 @@ let initialState = {
 const photosReducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case 'GET_PHOTO' : {
+        case SET_PHOTO : {
             return {
                 ...state,
                 dataPhoto: [...state.dataPhoto, ...action.photos],
@@ -16,36 +18,30 @@ const photosReducer = (state = initialState, action) => {
             }
         }
 
-        case 'LIKE_PHOTO' : {
-            let dataPhoto = [...state.dataPhoto];
-            let indexArr = dataPhoto.findIndex(item => item.photo.id === action.id);
-            dataPhoto[indexArr].photo.liked_by_user = true;
-            dataPhoto[indexArr].photo.likes++;
+        case TOGGLE_LIKE : {
+            const dataPhoto = [...state.dataPhoto];
+            const indexArr = dataPhoto.findIndex(item => item.id === action.id);
+            dataPhoto[indexArr].isLiked = action.isLiked;
+            if(action.isLiked) {
+                dataPhoto[indexArr].likes++;
+            } else {
+                dataPhoto[indexArr].likes--;
+            }
             return {
                 ...state,
-                dataPhoto: [...state.dataPhoto]
+                dataPhoto: dataPhoto
             }
+
         }
 
-        case 'UNLIKE_PHOTO' : {
-            let dataPhoto = [...state.dataPhoto];
-            let indexArr = dataPhoto.findIndex(item => item.photo.id === action.id);
-            dataPhoto[indexArr].photo.liked_by_user = false;
-            dataPhoto[indexArr].photo.likes--;
-            return {
-                ...state,
-                dataPhoto: [...state.dataPhoto]
-            }
-        }
-
-        case 'TOGGLE_IS_FETCHING' : {
+        case TOGGLE_IS_FETCHING : {
             return {
                 ...state,
                 isFetching: action.isFetching
             }
         }
 
-        case 'TOGGLE_IS_PHOTO_DETAIL_STATUS' : {
+        case TOGGLE_IS_PHOTO_DETAIL_STATUS : {
             return {
                 ...state,
                 photoDetailStatus: action.photoDetailStatus

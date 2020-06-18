@@ -3,22 +3,22 @@ import PhotoDetail from "./PhotoDetail/PhotoDetail.js";
 import {connect} from "react-redux";
 import { compose } from 'redux';
 import { withRouter } from 'react-router';
-import {setLike, disableLike, enablePhotoDetailStatus, disablePhotoDetailStatus} from "../../actions/index";
 
 
 const PhotoDetailContainer = (props) => {
     const {dataPhoto, photos} = props;
-    let photoId = photos.match.params.id;
-    let photo = dataPhoto.filter(p => p.photo.id === photoId);
+    const photoId = photos.match.params.id;
+    const photo = dataPhoto.filter(p => p.id === photoId);
 
-    return (<PhotoDetail photo={photo}/>);
+    return (<PhotoDetail photo={photo} />);
 
 }
 
 const mapStateToProps = (state) => {
+    const {dataPhoto} = state.photosPage;
     return {
-        dataPhoto: state.photosPage.dataPhoto
+        dataPhoto: dataPhoto
     }
 };
 
-export default compose(withRouter, connect(mapStateToProps, {setLike, disableLike, enablePhotoDetailStatus, disablePhotoDetailStatus}))(PhotoDetailContainer);
+export default compose(withRouter, connect(mapStateToProps, {}))(PhotoDetailContainer);

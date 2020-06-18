@@ -5,11 +5,12 @@ import {connect} from "react-redux";
 
 const Preloader = (props) => {
     const {isFetching} = props;
+    const {preloaderBlock, preloaderBlockWrapper, preloaderImg} = styles;
     if(isFetching) {
         return (
-            <div className={styles.preloaderBlock}>
-                <div className={styles.preloaderBlockWrapper}>
-                    <img className={styles.preloader} src={preloader} alt="Загрузка"/>
+            <div className={preloaderBlock}>
+                <div className={preloaderBlockWrapper}>
+                    <img className={preloaderImg} src={preloader} alt="Загрузка"/>
                 </div>
             </div>
         )
@@ -19,8 +20,9 @@ const Preloader = (props) => {
 }
 
 const mapStateToProps = (state) => {
+    const {isFetching} = state.photosPage;
     return {
-        isFetching: state.photosPage.isFetching
+        isFetching: isFetching
     }
 };
 

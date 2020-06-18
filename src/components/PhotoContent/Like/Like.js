@@ -3,18 +3,16 @@ import { connect } from 'react-redux';
 import styles from '../../UnsplashAppContainer/UnsplashAppItem/UnsplashAppItem.module.css';
 import like from "../../../assets/images/heart_red.svg";
 import notLike from "../../../assets/images/heart.svg";
-import {setLike, disableLike} from "../../../actions/index";
+import {toggleLikeUser} from "../../../actions/index";
 
 const Like = (props) => {
-    const {id, liked_by_user, likes ,setLike, disableLike} = props;
-    let likeUnlikePhoto = (id) => {
-        liked_by_user ? disableLike(id) : setLike(id);
-    }
+    const {id, isLiked, likes, toggleLikeUser} = props;
+    const {likePhotoBtn, likeImg, countLike} = styles;
 
     return (
-        <button className={styles.likePhotoBtn}>
-            <img className={styles.likeImg} src={liked_by_user ? like :  notLike} onClick={() => likeUnlikePhoto(id)} alt="like Button"/>
-            <span className={styles.countLike}>
+        <button className={likePhotoBtn}>
+            <img className={likeImg} src={isLiked ? like : notLike} onClick={() => toggleLikeUser(id, isLiked)} alt="like Button"/>
+            <span className={countLike}>
                     {likes ? likes : "0"}
                 </span>
         </button>
@@ -22,9 +20,10 @@ const Like = (props) => {
 }
 
 const mapStateToProps = state => {
+    const {dataPhoto} = state.photosPage;
     return {
-        dataPhoto: state.photosPage.dataPhoto
+        dataPhoto: dataPhoto
     }
 }
 
-export default connect(mapStateToProps, {setLike, disableLike})(Like);
+export default connect(mapStateToProps, {toggleLikeUser})(Like);

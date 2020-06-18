@@ -1,6 +1,5 @@
 import Unsplash from 'unsplash-js';
-
-const URL = "http://web-dev-page.ru/";
+import {URL} from '../global/constants/constants';
 
 export const unsplash = new Unsplash({
     accessKey: "DhN9G_bo-rHP6T8JurB-S_-OQvjFCrnszggu9gUs5fo",
@@ -15,5 +14,6 @@ export const authenticationUrl = unsplash.auth.getAuthenticationUrl([
 
 export const onAuth = () => {
     window.location.assign(authenticationUrl);
+
 };
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './PhotoDetail.module.css';
-import {disableScroll, returnToBackWindow, returnToBack} from "../../../supportFunctions";
+import {DISABLE_SCROLL, RETURN_TO_BACK_WINDOW, RETURN_TO_BACK} from "../../../supportFunctions";
 import {connect} from 'react-redux';
-import {setLike, disableLike, enablePhotoDetailStatus, disablePhotoDetailStatus} from "../../../actions/index";
+import {enablePhotoDetailStatus, disablePhotoDetailStatus} from "../../../actions/index";
 import Like from "../../PhotoContent/Like/Like";
 import PhotoDescription from "../../PhotoContent/PhotoDescription/PhotoDescription";
 import ButtonClose from "../../Buttons/ButtonClose/ButtonClose";
@@ -11,13 +11,13 @@ class PhotoDetail extends React.Component {
 
     componentDidMount() {
         const {enablePhotoDetailStatus} = this.props;
-        disableScroll();
+        DISABLE_SCROLL();
         enablePhotoDetailStatus();
     };
 
     componentDidUpdate() {
         const {photoDetailStatus} = this.props;
-        returnToBackWindow(photoDetailStatus);
+        RETURN_TO_BACK_WINDOW(photoDetailStatus);
     }
 
     componentWillUnmount() {
@@ -26,28 +26,27 @@ class PhotoDetail extends React.Component {
     }
 
     render() {
-        const {photo, setLike, disableLike} = this.props;
-
+        const {photo} = this.props;
         if (photo.length !== 0 ) {
-            let currentPhoto = photo[0].photo;
-            let userProfileLink = () => {window.open(currentPhoto.user.links.html, "_blank");};
+            const {photoDetailContainerWrapper, photoDetailContainer, photoDetailWrapper, photoDetailHeader, photoDetailImage, photoDetailFooter} = styles;
+            const {isLiked, id, likes, authorName, createdPhoto, authorProfileLink, photoImgRegular, authorProfileAvatar} = photo[0];
 
             return (<>
-                    <div onClick={() => {returnToBack()}} className={styles.photoDetailContainerWrapper}>
-                        <div  className={styles.photoDetailContainer} onClick={(event) => {event.stopPropagation();}}>
-                            <div className={styles.photoDetailWrapper}>
-                                <header className={styles.photoDetailHeader}>
-                                    <Like liked_by_user={currentPhoto.liked_by_user} id={currentPhoto.id} likes={currentPhoto.likes} setLike={setLike} disableLike={disableLike}/>
+                    <div onClick={() => {RETURN_TO_BACK()}} className={photoDetailContainerWrapper}>
+                        <div  className={photoDetailContainer} onClick={(event) => {event.stopPropagation();}}>
+                            <div className={photoDetailWrapper}>
+                                <header className={photoDetailHeader}>
+                                    <Like isLiked={isLiked} id={id} likes={likes} />
                                 </header>
 
                                 <ButtonClose />
 
                                 <span>
-                                    <img className={styles.photoDetailImage} src={currentPhoto ? currentPhoto.urls.regular : null} alt="Изображение" />
+                                    <img className={photoDetailImage} src={photoImgRegular} alt="Изображение" />
                                 </span>
 
-                                <footer className={styles.photoDetailFooter}>
-                                    <PhotoDescription userProfileLink={userProfileLink} userName={currentPhoto.user.name} photoCreated={currentPhoto.created_at} profileImageSmall={currentPhoto.user.profile_image.small}/>
+                                <footer className={photoDetailFooter}>
+                                    <PhotoDescription authorProfileLink={authorProfileLink} authorName={authorName} createdPhoto={createdPhoto} authorProfileAvatar={authorProfileAvatar}/>
                                 </footer>
                             </div>
 
@@ -63,10 +62,11 @@ class PhotoDetail extends React.Component {
 }
 
 const mapStateToProps = state => {
+    const {dataPhoto, photoDetailStatus} = state.photosPage;
     return {
-        dataPhoto: state.photosPage.dataPhoto,
-        photoDetailStatus: state.photosPage.photoDetailStatus,
+        dataPhoto: dataPhoto,
+        photoDetailStatus: photoDetailStatus,
     }
 }
 
-export default connect(mapStateToProps, {setLike, disableLike, enablePhotoDetailStatus, disablePhotoDetailStatus})(PhotoDetail);
+export default connect(mapStateToProps, {enablePhotoDetailStatus, disablePhotoDetailStatus})(PhotoDetail);

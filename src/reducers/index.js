@@ -5,6 +5,4 @@ const allReducers = combineReducers({
     photosPage : photosReducer
 });
 
-
-
 export default allReducers;

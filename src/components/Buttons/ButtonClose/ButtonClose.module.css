@@ -1,16 +1,19 @@
 .photoDetailClose {
     position: fixed;
     right: -40px;
-    top: 5px;
+    top: 0px;
     border: 0;
     background-color: transparent;
     color: white;
-    font-size: 2em;
+    background: url("../../../assets/images/close_btn.png") center/100% no-repeat;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
 }
 
 @media (max-width: 600px) {
     .photoDetailClose {
         right: 1em;
-        margin-top: 8px;
+        margin-top: 5px;
     }
 }
