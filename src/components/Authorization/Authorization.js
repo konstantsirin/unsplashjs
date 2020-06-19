@@ -3,8 +3,7 @@ import styles from './Authorization.module.css';
 import {onAuth} from './../../API/unsplashApi.js';
 import { withRouter } from "react-router-dom";
 
-
-const Authorization = (props) => {
+const Authorization = () => {
     const {wrapper, authBlock, logo, authButton} = styles;
 
     return (<div className={wrapper}>
@@ -21,6 +20,7 @@ const Authorization = (props) => {
             </div>
         </div>
     )
+
 };
 
 export default withRouter(Authorization);
