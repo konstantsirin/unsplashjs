@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/App';
-import {BrowserRouter, Redirect} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import store from './redux/store.js';
 import {Provider} from "react-redux";
 import 'normalize.css';
