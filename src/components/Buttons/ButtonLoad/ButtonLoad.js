@@ -16,7 +16,7 @@ const ButtonLoad = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    const {currentPage, isFetching} = state.photosPage;
+
     return {
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state)

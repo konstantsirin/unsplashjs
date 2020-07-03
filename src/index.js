@@ -8,8 +8,8 @@ import 'normalize.css';
 import './global/styles/globalStyles.css';
 import {unsplash, onAuth} from "./API/unsplashApi";
 import {code} from './global/constants/constants.js';
-document.addEventListener("DOMContentLoaded", onAuth);
 
+document.addEventListener("DOMContentLoaded", onAuth);
 
 if (code) {
     document.removeEventListener("DOMContentLoaded", onAuth);
