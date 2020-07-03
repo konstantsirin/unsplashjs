@@ -2,6 +2,7 @@ import React from 'react';
 import styles from "./ButtonLoad.module.css";
 import {getPhoto} from "../../../actions";
 import {connect} from "react-redux";
+import {getCurrentPage, getIsFetching} from "../../../selectors/photos-selectors";
 
 const ButtonLoad = (props) => {
     const {currentPage, isFetching, setPhoto} = props;
@@ -17,8 +18,8 @@ const ButtonLoad = (props) => {
 const mapStateToProps = (state) => {
     const {currentPage, isFetching} = state.photosPage;
     return {
-        currentPage: currentPage,
-        isFetching: isFetching
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state)
     }
 };
 

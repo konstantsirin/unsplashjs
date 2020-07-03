@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
 import Like from '../../PhotoContent/Like/Like.js';
 import PhotoDescription from '../../PhotoContent/PhotoDescription/PhotoDescription.js';
+import {getDataPhoto} from "../../../selectors/photos-selectors";
 
 class UnsplashAppItem extends React.Component {
 
@@ -36,9 +37,9 @@ class UnsplashAppItem extends React.Component {
 }
 
 const mapStateToProps = state => {
-    const {dataPhoto} = state.photosPage;
+
     return {
-        dataPhoto: dataPhoto,
+        dataPhoto: getDataPhoto(state)
     }
 }
 

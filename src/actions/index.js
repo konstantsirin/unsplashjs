@@ -1,6 +1,7 @@
 import { toJson } from 'unsplash-js';
 import { unsplash } from '../API/unsplashApi';
-import {SET_PHOTO, TOGGLE_IS_FETCHING, TOGGLE_LIKE, TOGGLE_IS_PHOTO_DETAIL_STATUS, PER_PAGE} from "../global/constants/constants";
+import {PER_PAGE} from "../global/constants/constants";
+import {SET_PHOTO, TOGGLE_IS_FETCHING, TOGGLE_LIKE, TOGGLE_IS_PHOTO_DETAIL_STATUS} from "../global/constants/actionsTypes";
 import {PHOTOS_DATA_NORMALIZE} from '../supportFunctions/index';
 
 const setPhoto = (photos) => { return {

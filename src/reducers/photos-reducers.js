@@ -1,4 +1,4 @@
-import {SET_PHOTO, TOGGLE_IS_FETCHING, TOGGLE_LIKE, TOGGLE_IS_PHOTO_DETAIL_STATUS} from '../global/constants/constants.js';
+import {SET_PHOTO, TOGGLE_IS_FETCHING, TOGGLE_LIKE, TOGGLE_IS_PHOTO_DETAIL_STATUS} from '../global/constants/actionsTypes';
 
 const initialState = {
         dataPhoto : [],

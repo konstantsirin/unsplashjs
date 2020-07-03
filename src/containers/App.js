@@ -1,5 +1,4 @@
 import React from 'react';
-import Authorization from "../components/Authorization/Authorization";
 import UnsplashAppContainer from "../components/UnsplashAppContainer/UnsplashAppContainer";
 import PhotoDetailContainer from "../components/PhotoDetailContainer/PhotoDetailContainer";
 import { Route, Redirect, withRouter } from 'react-router-dom';
@@ -11,9 +10,8 @@ function App() {
             <div className="App">
                 <Preloader />
                 <Route exact path="/">
-                    <Redirect to="/auth" />
+                    <Redirect to="/unsplashapp" />
                 </Route>
-                <Route path="/auth" component={Authorization} />
                 <Route path="/unsplashapp" component={UnsplashAppContainer} />
                 <Route path="/unsplashapp/:id" render={(props) => <PhotoDetailContainer photos={props} />} />
             </div>

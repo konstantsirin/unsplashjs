@@ -3,6 +3,7 @@ import PhotoDetail from "./PhotoDetail/PhotoDetail.js";
 import {connect} from "react-redux";
 import { compose } from 'redux';
 import { withRouter } from 'react-router';
+import {getDataPhoto} from "../../selectors/photos-selectors";
 
 
 const PhotoDetailContainer = (props) => {
@@ -15,9 +16,9 @@ const PhotoDetailContainer = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    const {dataPhoto} = state.photosPage;
+
     return {
-        dataPhoto: dataPhoto
+        dataPhoto: getDataPhoto(state)
     }
 };
 

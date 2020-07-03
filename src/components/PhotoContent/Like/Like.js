@@ -4,6 +4,7 @@ import styles from '../../UnsplashAppContainer/UnsplashAppItem/UnsplashAppItem.m
 import like from "../../../assets/images/heart_red.svg";
 import notLike from "../../../assets/images/heart.svg";
 import {toggleLikeUser} from "../../../actions/index";
+import {getDataPhoto} from "../../../selectors/photos-selectors";
 
 const Like = (props) => {
     const {id, isLiked, likes, toggleLikeUser} = props;
@@ -20,9 +21,9 @@ const Like = (props) => {
 }
 
 const mapStateToProps = state => {
-    const {dataPhoto} = state.photosPage;
+
     return {
-        dataPhoto: dataPhoto
+        dataPhoto: getDataPhoto(state)
     }
 }
 

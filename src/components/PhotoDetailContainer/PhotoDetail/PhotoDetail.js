@@ -6,6 +6,7 @@ import {enablePhotoDetailStatus, disablePhotoDetailStatus} from "../../../action
 import Like from "../../PhotoContent/Like/Like";
 import PhotoDescription from "../../PhotoContent/PhotoDescription/PhotoDescription";
 import ButtonClose from "../../Buttons/ButtonClose/ButtonClose";
+import {getDataPhoto, getPhotoDetailStatus} from "../../../selectors/photos-selectors";
 
 class PhotoDetail extends React.Component {
 
@@ -62,10 +63,10 @@ class PhotoDetail extends React.Component {
 }
 
 const mapStateToProps = state => {
-    const {dataPhoto, photoDetailStatus} = state.photosPage;
+
     return {
-        dataPhoto: dataPhoto,
-        photoDetailStatus: photoDetailStatus,
+        dataPhoto: getDataPhoto(state),
+        photoDetailStatus: getPhotoDetailStatus(state),
     }
 }
 

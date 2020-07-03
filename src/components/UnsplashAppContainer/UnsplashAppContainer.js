@@ -6,6 +6,7 @@ import {getPhoto, toggleIsFetching} from "../../actions/index";
 import {connect} from "react-redux";
 import ButtonLoad from "../Buttons/ButtonLoad/ButtonLoad";
 import uniqid from 'uniqid';
+import {getCurrentPage, getDataPhoto, getIsFetching} from "../../selectors/photos-selectors";
 
 
 class UnsplashAppContainer extends React.Component {
@@ -55,11 +56,11 @@ class UnsplashAppContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    const {dataPhoto, currentPage, isFetching} = state.photosPage;
+
     return {
-        dataPhoto: dataPhoto,
-        currentPage: currentPage,
-        isFetching: isFetching
+        dataPhoto: getDataPhoto(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state)
     }
 };
 
