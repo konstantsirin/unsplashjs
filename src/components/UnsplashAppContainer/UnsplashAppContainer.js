@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from "../Header/Header";
-import UnsplashAppItem from "./UnsplashAppItem/UnsplashAppItem";
+import Header from '../Header/Header';
+import UnsplashAppItem from './UnsplashAppItem/UnsplashAppItem';
 import styles from './UnsplashAppContainer.module.css';
-import {getPhoto, toggleIsFetching} from "../../actions/index";
-import {connect} from "react-redux";
-import ButtonLoad from "../Buttons/ButtonLoad/ButtonLoad";
+import {getPhoto} from '../../actions/index';
+import {connect} from 'react-redux';
+import ButtonLoad from '../Buttons/ButtonLoad/ButtonLoad';
 import uniqid from 'uniqid';
-import {getCurrentPage, getDataPhoto, getIsFetching} from "../../selectors/photos-selectors";
+import {getCurrentPage, getDataPhoto, getIsFetching} from '../../selectors/photos-selectors';
 
 
 class UnsplashAppContainer extends React.Component {
@@ -36,7 +36,7 @@ class UnsplashAppContainer extends React.Component {
 
 
     render() {
-        const {dataPhoto, toggleLikeUser} = this.props;
+        const {dataPhoto} = this.props;
         const {galleryContainer, galleryList} = styles;
 
             return (
@@ -44,7 +44,7 @@ class UnsplashAppContainer extends React.Component {
                 <Header />
                 <div className={galleryContainer}>
                     <ul className={galleryList}>
-                        {dataPhoto ? dataPhoto.map(photo => <UnsplashAppItem key={uniqid()} photo={photo} toggleLikeUser={toggleLikeUser}/>) : ''}
+                        {dataPhoto ? dataPhoto.map(photo => <UnsplashAppItem key={uniqid()} photo={photo}/>) : ''}
                     </ul>
                     <ButtonLoad />
                 </div>
@@ -64,4 +64,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, {getPhoto, toggleIsFetching})(UnsplashAppContainer);
+export default connect(mapStateToProps, {getPhoto})(UnsplashAppContainer);

@@ -1,5 +1,5 @@
 import Unsplash from 'unsplash-js';
-import {ACCESS_KEY, SECRET, URL} from '../global/constants/constants';
+import {ACCESS_KEY, SECRET, URL} from '../constants/constants';
 
 export const unsplash = new Unsplash({
     accessKey: ACCESS_KEY,
@@ -8,12 +8,11 @@ export const unsplash = new Unsplash({
 });
 
 export const authenticationUrl = unsplash.auth.getAuthenticationUrl([
-    "public",
-    "write_likes"
+    'public',
+    'write_likes'
 ]);
 
-export const onAuth = () => {
+export const onAuthorization = () => {
     window.location.assign(authenticationUrl);
-
 };
 

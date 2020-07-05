@@ -1,9 +1,9 @@
 import React from 'react';
-import PhotoDetail from "./PhotoDetail/PhotoDetail.js";
-import {connect} from "react-redux";
+import PhotoDetail from './PhotoDetail/PhotoDetail.js';
+import {connect} from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router';
-import {getDataPhoto} from "../../selectors/photos-selectors";
+import {getDataPhoto} from '../../selectors/photos-selectors';
 
 
 const PhotoDetailContainer = (props) => {

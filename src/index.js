@@ -1,19 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/App';
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter} from 'react-router-dom';
 import store from './redux/store.js';
-import {Provider} from "react-redux";
+import {Provider} from 'react-redux';
 import 'normalize.css';
-import './global/styles/globalStyles.css';
-import {unsplash, onAuth} from "./API/unsplashApi";
-import {code} from './global/constants/constants.js';
+import './styles/globalStyles.css';
+import {unsplash, onAuthorization} from './API/unsplashApi';
 
-document.addEventListener("DOMContentLoaded", onAuth);
+window.onload = () => onAuthorization();
+
+const code = window.location.search.split('code=')[1];
 
 if (code) {
-    document.removeEventListener("DOMContentLoaded", onAuth);
-
+    window.onload = false;
     unsplash.auth.userAuthentication(code)
         .then(res => res.json())
         .then(json => {

@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 
 const getDataPhotoSelector = (state) => {
-    return state.photosPage.dataPhoto;
+    return state.dataPhoto;
 };
 
 export const getDataPhoto = createSelector(getDataPhotoSelector,
@@ -10,7 +10,7 @@ export const getDataPhoto = createSelector(getDataPhotoSelector,
 });
 
 const getCurrentPageSelector = (state) => {
-    return state.photosPage.currentPage;
+    return state.currentPage;
 };
 
 export const getCurrentPage = createSelector(getCurrentPageSelector,
@@ -19,19 +19,10 @@ export const getCurrentPage = createSelector(getCurrentPageSelector,
 });
 
 const getIsFetchingSelector = (state) => {
-    return state.photosPage.isFetching;
+    return state.isFetching;
 };
 
 export const getIsFetching = createSelector(getIsFetchingSelector,
     (isFetching) => {
         return isFetching;
-});
-
-const getPhotoDetailStatusSelector = (state) => {
-    return state.photosPage.photoDetailStatus;
-};
-
-export const getPhotoDetailStatus = createSelector(getPhotoDetailStatusSelector,
-    (photoDetailStatus) => {
-        return photoDetailStatus;
 });

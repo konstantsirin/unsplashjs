@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from "./ButtonLoad.module.css";
-import {getPhoto} from "../../../actions";
-import {connect} from "react-redux";
-import {getCurrentPage, getIsFetching} from "../../../selectors/photos-selectors";
+import styles from './ButtonLoad.module.css';
+import {getPhoto} from '../../../actions';
+import {connect} from 'react-redux';
+import {getCurrentPage, getIsFetching} from '../../../selectors/photos-selectors';
 
 const ButtonLoad = (props) => {
     const {currentPage, isFetching, setPhoto} = props;

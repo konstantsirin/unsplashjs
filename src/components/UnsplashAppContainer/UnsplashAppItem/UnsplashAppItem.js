@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './UnsplashAppItem.module.css';
-import {NavLink} from "react-router-dom";
-import {connect} from "react-redux";
+import {NavLink} from 'react-router-dom';
+import {connect} from 'react-redux';
 import Like from '../../PhotoContent/Like/Like.js';
 import PhotoDescription from '../../PhotoContent/PhotoDescription/PhotoDescription.js';
-import {getDataPhoto} from "../../../selectors/photos-selectors";
+import {getDataPhoto} from '../../../selectors/photos-selectors';
 
 class UnsplashAppItem extends React.Component {
 

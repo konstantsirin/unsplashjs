@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from "./Preloader.module.css";
-import preloader from "../../assets/images/preloader.gif";
-import {connect} from "react-redux";
-import {getIsFetching} from "../../selectors/photos-selectors";
+import styles from './Preloader.module.css';
+import preloader from '../../assets/images/preloader.gif';
+import {connect} from 'react-redux';
+import {getIsFetching} from '../../selectors/photos-selectors';
 
 const Preloader = (props) => {
     const {isFetching} = props;

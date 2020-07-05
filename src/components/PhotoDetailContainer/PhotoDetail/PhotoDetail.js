@@ -1,29 +1,29 @@
 import React from 'react';
 import styles from './PhotoDetail.module.css';
-import {DISABLE_SCROLL, RETURN_TO_BACK_WINDOW, RETURN_TO_BACK} from "../../../supportFunctions";
+import {disable_scroll, return_to_back_window, return_to_back} from '../../../supportFunctions';
 import {connect} from 'react-redux';
-import {enablePhotoDetailStatus, disablePhotoDetailStatus} from "../../../actions/index";
-import Like from "../../PhotoContent/Like/Like";
-import PhotoDescription from "../../PhotoContent/PhotoDescription/PhotoDescription";
-import ButtonClose from "../../Buttons/ButtonClose/ButtonClose";
-import {getDataPhoto, getPhotoDetailStatus} from "../../../selectors/photos-selectors";
+import {togglePhotoDetailStatus, } from '../../../actions/index';
+import Like from '../../PhotoContent/Like/Like';
+import PhotoDescription from '../../PhotoContent/PhotoDescription/PhotoDescription';
+import ButtonClose from '../../Buttons/ButtonClose/ButtonClose';
+import {getDataPhoto} from '../../../selectors/photos-selectors';
 
 class PhotoDetail extends React.Component {
 
     componentDidMount() {
-        const {enablePhotoDetailStatus} = this.props;
-        DISABLE_SCROLL();
-        enablePhotoDetailStatus();
+        const {togglePhotoDetailStatus} = this.props;
+        disable_scroll();
+        togglePhotoDetailStatus();
     };
 
     componentDidUpdate() {
         const {photoDetailStatus} = this.props;
-        RETURN_TO_BACK_WINDOW(photoDetailStatus);
+        return_to_back_window(photoDetailStatus);
     }
 
     componentWillUnmount() {
-        const {disablePhotoDetailStatus} = this.props;
-        disablePhotoDetailStatus();
+        const {togglePhotoDetailStatus} = this.props;
+        togglePhotoDetailStatus();
     }
 
     render() {
@@ -33,7 +33,7 @@ class PhotoDetail extends React.Component {
             const {isLiked, id, likes, authorName, createdPhoto, authorProfileLink, photoImgRegular, authorProfileAvatar} = photo[0];
 
             return (<>
-                    <div onClick={() => {RETURN_TO_BACK()}} className={photoDetailContainerWrapper}>
+                    <div onClick={() => {return_to_back()}} className={photoDetailContainerWrapper}>
                         <div  className={photoDetailContainer} onClick={(event) => {event.stopPropagation();}}>
                             <div className={photoDetailWrapper}>
                                 <header className={photoDetailHeader}>
@@ -65,9 +65,8 @@ class PhotoDetail extends React.Component {
 const mapStateToProps = state => {
 
     return {
-        dataPhoto: getDataPhoto(state),
-        photoDetailStatus: getPhotoDetailStatus(state),
+        dataPhoto: getDataPhoto(state)
     }
 }
 
-export default connect(mapStateToProps, {enablePhotoDetailStatus, disablePhotoDetailStatus})(PhotoDetail);
+export default connect(mapStateToProps, {togglePhotoDetailStatus})(PhotoDetail);

@@ -1,5 +1,5 @@
 import React from 'react';
-import noUser from "../../../assets/images/no_user.png";
+import noUser from '../../../assets/images/no_user.png';
 import styles from '../../UnsplashAppContainer/UnsplashAppItem/UnsplashAppItem.module.css';
 
 const PhotoDescription = (props) => {
