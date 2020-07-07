@@ -1,13 +1,13 @@
 import {SET_PHOTO, TOGGLE_IS_FETCHING, TOGGLE_LIKE, TOGGLE_IS_PHOTO_DETAIL_STATUS} from '../constants/actionsTypes';
 
-let initialState = {
+const INITIAL_STATE = {
         dataPhoto : [],
         currentPage: 1,
         isFetching : false,
         photoDetailStatus : false
 };
 
-const photosReducer = (state = initialState, action) => {
+const photosReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
 
         case SET_PHOTO : {

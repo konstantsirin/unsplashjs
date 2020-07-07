@@ -1,7 +1,10 @@
 import React from 'react';
+
+import { Route, Redirect, withRouter } from 'react-router-dom';
+
 import UnsplashAppContainer from '../components/UnsplashAppContainer/UnsplashAppContainer';
 import PhotoDetailContainer from '../components/PhotoDetailContainer/PhotoDetailContainer';
-import { Route, Redirect, withRouter } from 'react-router-dom';
+
 import Preloader from '../components/Preloader/Preloader';
 
 function App() {
@@ -9,11 +12,8 @@ function App() {
     return (
             <div>
                 <Preloader />
-                <Route exact path='/'>
-                    <Redirect to='/unsplashapp' />
-                </Route>
-                <Route path='/unsplashapp' component={UnsplashAppContainer} />
-                <Route path='/unsplashapp/:id' render={(props) => <PhotoDetailContainer photos={props} />} />
+                <Route path='/' component={UnsplashAppContainer} />
+                <Route path='/:id' render={(props) => <PhotoDetailContainer photos={props} />} />
             </div>
         );
 

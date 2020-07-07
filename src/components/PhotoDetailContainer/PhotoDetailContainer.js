@@ -1,8 +1,11 @@
 import React from 'react';
-import PhotoDetail from './PhotoDetail/PhotoDetail.js';
+
 import {connect} from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router';
+
+import PhotoDetail from './PhotoDetail/PhotoDetail.js';
+
 import {getDataPhoto} from '../../selectors/photos-selectors';
 
 

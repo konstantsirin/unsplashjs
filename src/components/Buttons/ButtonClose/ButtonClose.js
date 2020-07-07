@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from './ButtonClose.module.css';
+
 import {return_to_back} from '../../../supportFunctions';
 
+import styles from './ButtonClose.module.css';
 
 const ButtonClose = () => {
     const {photoDetailClose} = styles;

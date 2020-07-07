@@ -1,13 +1,16 @@
 import React from 'react';
+
+import {connect} from 'react-redux';
+import uniqid from 'uniqid';
+
 import Header from '../Header/Header';
 import UnsplashAppItem from './UnsplashAppItem/UnsplashAppItem';
-import styles from './UnsplashAppContainer.module.css';
-import {getPhoto} from '../../actions/index';
-import {connect} from 'react-redux';
 import ButtonLoad from '../Buttons/ButtonLoad/ButtonLoad';
-import uniqid from 'uniqid';
-import {getCurrentPage, getDataPhoto, getIsFetching} from '../../selectors/photos-selectors';
 
+import styles from './UnsplashAppContainer.module.css';
+
+import {getPhoto} from '../../actions/index';
+import {getCurrentPage, getDataPhoto, getIsFetching} from '../../selectors/photos-selectors';
 
 class UnsplashAppContainer extends React.Component {
     ON_SCROLL = (ev) => {
@@ -23,6 +26,7 @@ class UnsplashAppContainer extends React.Component {
     };
 
     componentDidMount() {
+        console.log(this.props);
         const { currentPage, getPhoto } = this.props;
         getPhoto(currentPage);
 

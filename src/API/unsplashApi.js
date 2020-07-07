@@ -1,4 +1,5 @@
 import Unsplash from 'unsplash-js';
+
 import {ACCESS_KEY, SECRET, URL} from '../constants/constants';
 
 export const unsplash = new Unsplash({

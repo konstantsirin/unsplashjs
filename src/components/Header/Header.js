@@ -1,6 +1,7 @@
 import React from 'react';
-import unsplashLogo from '../../assets/images/unsplash_logo.svg';
+
 import styles from './Header.module.css';
+import unsplashLogo from '../../assets/images/unsplash_logo.svg';
 
 class Header extends React.Component {
     render() {

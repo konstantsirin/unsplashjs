@@ -1,6 +1,7 @@
 import React from 'react';
-import noUser from '../../../assets/images/no_user.png';
+
 import styles from '../../UnsplashAppContainer/UnsplashAppItem/UnsplashAppItem.module.css';
+import noUser from '../../../assets/images/no_user.png';
 
 const PhotoDescription = (props) => {
     const {authorProfileLink, authorName, createdPhoto, authorProfileAvatar} = props;

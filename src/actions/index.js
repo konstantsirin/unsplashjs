@@ -1,8 +1,12 @@
 import { toJson } from 'unsplash-js';
+
 import { unsplash } from '../API/unsplashApi';
-import {PER_PAGE} from '../constants/constants';
-import {SET_PHOTO, TOGGLE_IS_FETCHING, TOGGLE_LIKE, TOGGLE_IS_PHOTO_DETAIL_STATUS} from '../constants/actionsTypes';
+
 import {photos_data_normalize} from '../supportFunctions/index';
+
+import {QUANTITY_REQUIRED_PHOTO} from '../constants/constants';
+import {SET_PHOTO, TOGGLE_IS_FETCHING, TOGGLE_LIKE, TOGGLE_IS_PHOTO_DETAIL_STATUS} from '../constants/actionsTypes';
+
 
 //setPhoto
 const setPhoto = (photos) => { return {
@@ -17,8 +21,7 @@ export const toggleIsFetching = () => {return {
 export const getPhoto = (currentPage) => {
     return dispatch => {
         dispatch(toggleIsFetching());
-        unsplash.auth.setBearerToken(localStorage.getItem('token'));
-        unsplash.photos.listPhotos(currentPage, PER_PAGE, 'latest')
+        unsplash.photos.listPhotos(currentPage, QUANTITY_REQUIRED_PHOTO, 'latest')
             .then(toJson)
             .then(photos => {
                 dispatch(setPhoto(photos));
@@ -41,22 +44,12 @@ const toggleLike = (id) => {return {
 
 export const toggleLikeUser = (id, isLiked) => {
     return dispatch => {
-        if(isLiked) {
-            unsplash.auth.setBearerToken(localStorage.getItem('token'));
-            unsplash.photos.unlikePhoto(id)
-                .then(toJson)
-                .then(() => {
-                    dispatch(toggleLike(id))
-                })
-                .catch((error) => {console.log(`ОШИБКА!!! ${error}`);})
-        } else {
-            unsplash.auth.setBearerToken(localStorage.getItem('token'));
-            unsplash.photos.likePhoto(id)
-                .then(toJson)
-                .then(() => {
-                    dispatch(toggleLike(id));
-                })
-                .catch((error) => {console.log(`ОШИБКА!!! ${error}`);})
-        }
+        (isLiked ? unsplash.photos.unlikePhoto(id) : unsplash.photos.likePhoto(id))
+            .then(toJson)
+            .then(() => {
+                dispatch(toggleLike(id))
+            })
+            .catch((error) => {console.log(`ОШИБКА!!! ${error}`);})
     }
 }
+

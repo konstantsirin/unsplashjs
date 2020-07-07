@@ -1,11 +1,15 @@
 import React from 'react';
+
 import ReactDOM from 'react-dom';
-import App from './containers/App';
 import {BrowserRouter} from 'react-router-dom';
-import store from './redux/store.js';
 import {Provider} from 'react-redux';
+
+import App from './containers/App';
+
 import 'normalize.css';
 import './styles/globalStyles.css';
+
+import store from './redux/store.js';
 import {unsplash, onAuthorization} from './API/unsplashApi';
 
 window.onload = () => onAuthorization();
