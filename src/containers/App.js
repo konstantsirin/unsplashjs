@@ -12,7 +12,7 @@ function App() {
     return (
             <div>
                 <Preloader />
-                <Route exact path='/'>
+                <Route path='/'>
                     <Redirect to='/' />
                 </Route>
                 <Route path='/' component={UnsplashAppContainer} />
