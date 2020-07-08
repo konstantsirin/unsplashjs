@@ -12,6 +12,9 @@ function App() {
     return (
             <div>
                 <Preloader />
+                <Route exact path='/'>
+                    <Redirect to='/' />
+                </Route>
                 <Route path='/' component={UnsplashAppContainer} />
                 <Route path='/:id' render={(props) => <PhotoDetailContainer photos={props} />} />
             </div>
