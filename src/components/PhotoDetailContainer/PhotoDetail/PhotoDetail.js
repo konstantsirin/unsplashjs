@@ -1,12 +1,16 @@
 import React from 'react';
-import styles from './PhotoDetail.module.css';
-import {disable_scroll, return_to_back_window, return_to_back} from '../../../supportFunctions';
+
 import {connect} from 'react-redux';
+
 import {togglePhotoDetailStatus, } from '../../../actions/index';
 import Like from '../../PhotoContent/Like/Like';
 import PhotoDescription from '../../PhotoContent/PhotoDescription/PhotoDescription';
 import ButtonClose from '../../Buttons/ButtonClose/ButtonClose';
+
+import styles from './PhotoDetail.module.css';
+import {disable_scroll, return_to_back_window, return_to_back} from '../../../supportFunctions';
 import {getDataPhoto} from '../../../selectors/photos-selectors';
+import UnsplashAppContainer from "../../UnsplashAppContainer/UnsplashAppContainer";
 
 class PhotoDetail extends React.Component {
 
@@ -33,6 +37,7 @@ class PhotoDetail extends React.Component {
             const {isLiked, id, likes, authorName, createdPhoto, authorProfileLink, photoImgRegular, authorProfileAvatar} = photo[0];
 
             return (<>
+                    <UnsplashAppContainer />
                     <div onClick={() => {return_to_back()}} className={photoDetailContainerWrapper}>
                         <div  className={photoDetailContainer} onClick={(event) => {event.stopPropagation();}}>
                             <div className={photoDetailWrapper}>

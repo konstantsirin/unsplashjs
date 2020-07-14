@@ -12,8 +12,3 @@ export const authenticationUrl = unsplash.auth.getAuthenticationUrl([
     'public',
     'write_likes'
 ]);
-
-export const onAuthorization = () => {
-    window.location.assign(authenticationUrl);
-};
-

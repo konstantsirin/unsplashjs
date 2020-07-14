@@ -26,10 +26,11 @@ class UnsplashAppContainer extends React.Component {
     };
 
     componentDidMount() {
-        console.log(this.props);
-        const { currentPage, getPhoto } = this.props;
-        getPhoto(currentPage);
+        const {dataPhoto, currentPage, getPhoto } = this.props;
 
+        if(dataPhoto.length === 0) {
+            getPhoto(currentPage);
+        }
         window.addEventListener('scroll', this.ON_SCROLL, false);
     };
 
