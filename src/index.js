@@ -20,21 +20,21 @@ if (code) {
         .then(json => {
             localStorage.setItem('token', json.access_token);
             unsplash.auth.setBearerToken(json.access_token);
-        }).then( window.history.pushState(null, null, '/'));
+        }).then( window.history.pushState(null, null, '/'))
+        .then(
+            ReactDOM.render(
+                <React.StrictMode>
 
-    ReactDOM.render(
-        <React.StrictMode>
+                    <BrowserRouter>
+                        <Provider store={store}>
+                            <App />
+                        </Provider>
+                    </BrowserRouter>
 
-            <BrowserRouter>
-                <Provider store={store}>
-                    <App />
-                </Provider>
-            </BrowserRouter>
-
-        </React.StrictMode>,
-        document.getElementById('root')
-    );
-
+                </React.StrictMode>,
+                document.getElementById('root')
+            )
+        );
 } else {
     window.location.assign(authenticationUrl);
 }
