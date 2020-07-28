@@ -1,11 +1,5 @@
-import {SET_PHOTO, TOGGLE_IS_FETCHING, TOGGLE_LIKE, TOGGLE_IS_PHOTO_DETAIL_STATUS} from '../constants/actionsTypes';
-
-const INITIAL_STATE = {
-        dataPhoto : [],
-        currentPage: 1,
-        isFetching : false,
-        photoDetailStatus : false
-};
+import { SET_PHOTO, TOGGLE_IS_FETCHING, TOGGLE_LIKE, TOGGLE_IS_PHOTO_DETAIL_STATUS } from '../constants/actionsTypes';
+import { INITIAL_STATE } from '../constants/constants'
 
 const photosReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
@@ -22,11 +16,13 @@ const photosReducer = (state = INITIAL_STATE, action) => {
             const dataPhoto = [...state.dataPhoto];
             const indexArr = dataPhoto.findIndex(item => item.id === action.id);
             dataPhoto[indexArr].isLiked = !dataPhoto[indexArr].isLiked;
+
             if(dataPhoto[indexArr].isLiked) {
                 dataPhoto[indexArr].likes++;
             } else {
                 dataPhoto[indexArr].likes--;
             }
+
             return {
                 ...state,
                 dataPhoto: dataPhoto

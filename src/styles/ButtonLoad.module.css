@@ -9,3 +9,8 @@
     vertical-align: middle;
     margin: 30px;
 }
+
+.loadBtn:disabled {
+    color: #e6f772;
+    background-color: black;
+}

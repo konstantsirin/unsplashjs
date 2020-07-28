@@ -7,19 +7,10 @@
 }
 
 .galleryItemImageBlock {
-    background: url(../../../assets/images/zoom.png) center no-repeat;
+    background: url(../assets/images/zoom.png) center no-repeat;
     background-color: #000;
 
     overflow: hidden;
-}
-
-.galleryItemImageBlock:hover .galleryItemImage{
-    opacity: 0.5;
-    transform: scale(1.05);
-}
-
-.galleryItem{
-    position: relative;
 }
 
 .galleryItemHeader {
@@ -28,6 +19,16 @@
     position: absolute;
     right: 0;
     margin: 10px 10px 0 0;
+}
+
+
+.galleryItemImageBlock:hover .galleryItemImage{
+    opacity: 0.5;
+    transform: scale(1.05);
+}
+
+.galleryItem{
+    position: relative;
 }
 
 .galleryItemBlock:hover .galleryItemHeader{

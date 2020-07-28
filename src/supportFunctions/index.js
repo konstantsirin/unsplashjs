@@ -1,40 +1,36 @@
-const normalize_date = (date) => {
+import disableScroll from 'disable-scroll';
+
+const normalizeDate = (date) => {
     let _date = new Date(date);
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
     return _date.toLocaleDateString('ru-RU', options);
 };
 
-export const disable_scroll = () => {
-    let x = window.scrollX;
-    let y = window.scrollY;
-    window.onscroll = function(){window.scrollTo(x, y);};
-};
-
-export const enable_scroll = () => {
-    window.onscroll = function(){};
-};
-
-const return_to_back_esc = (ev) => {if(ev.key === 'Escape') {
-    return_to_back();
+const returnToBackEsc = (ev) => {if(ev.key === 'Escape') {
+    returnToBack();
 }};
 
-export const return_to_back = () => {
+export const returnToBack = () => {
     window.history.back();
-    enable_scroll();
-    window.removeEventListener('keydown', return_to_back_esc);
+    disableScroll.on();
+    window.removeEventListener('keydown', returnToBackEsc);
 };
 
-export const return_to_back_window = (photoDetailStatus) => {
+export const returnToBackWindow = (photoDetailStatus) => {
     if(photoDetailStatus) {
-        window.addEventListener('keydown', return_to_back_esc);
+        window.addEventListener('keydown', returnToBackEsc);
     }
 };
 
-export const photos_data_normalize = (photos) => {
+export const photosDataNormalize = (photos) => {
     return photos.map(p => {
         return ({
             id: p ? p.id : '',
-            createdPhoto: p ? normalize_date(p.created_at) : '',
+            createdPhoto: p ? normalizeDate(p.created_at) : '',
             isLiked: p ? p.liked_by_user : '',
             likes: p ? p.likes : '0',
             photoImgSmall: p && p.urls ? p.urls.small : '',

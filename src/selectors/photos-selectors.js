@@ -26,3 +26,7 @@ export const getIsFetching = createSelector(getIsFetchingSelector,
     (isFetching) => {
         return isFetching;
 });
+
+export const getPhotoDetailStatus = (state) => {
+    return state.photoDetailStatus;
+}

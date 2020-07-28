@@ -5,7 +5,7 @@
     border: 0;
     background-color: transparent;
     color: white;
-    background: url("../../../assets/images/close_btn.png") center/100% no-repeat;
+    background: url("../assets/images/close_btn.png") center/100% no-repeat;
     width: 35px;
     height: 35px;
     cursor: pointer;

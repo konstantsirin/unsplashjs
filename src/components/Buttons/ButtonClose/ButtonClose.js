@@ -1,14 +1,17 @@
 import React from 'react';
 
-import {return_to_back} from '../../../supportFunctions';
+import { returnToBack } from '../../../supportFunctions';
 
-import styles from './ButtonClose.module.css';
+import styles from '../../../styles/ButtonClose.module.css';
 
 const ButtonClose = () => {
-    const {photoDetailClose} = styles;
+    const { photoDetailClose } = styles;
 
     return (
-        <button className={photoDetailClose} onClick={() => {return_to_back()}} aria-label="Close">
+        <button
+            className={ photoDetailClose }
+            onClick={() => { returnToBack() }}
+            aria-label='Close'>
         </button>
     )
 

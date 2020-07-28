@@ -1,20 +1,25 @@
 import React from 'react';
 
-import {connect} from 'react-redux';
-
-import styles from './Preloader.module.css';
+import styles from '../../styles/Preloader.module.css';
 import preloader from '../../assets/images/preloader.gif';
 
-import {getIsFetching} from '../../selectors/photos-selectors';
-
 const Preloader = (props) => {
-    const {isFetching} = props;
-    const {preloaderBlock, preloaderBlockWrapper, preloaderImg} = styles;
+    const { isFetching } = props;
+    const { preloaderBlock, preloaderBlockWrapper, preloaderImg } = styles;
+
     if(isFetching) {
         return (
-            <div className={preloaderBlock}>
-                <div className={preloaderBlockWrapper}>
-                    <img className={preloaderImg} src={preloader} alt="Загрузка"/>
+            <div
+                className={ preloaderBlock }
+            >
+                <div
+                    className={ preloaderBlockWrapper }
+                >
+                    <img
+                        className={ preloaderImg }
+                        src={ preloader }
+                        alt='Загрузка'
+                    />
                 </div>
             </div>
         )
@@ -23,10 +28,4 @@ const Preloader = (props) => {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        isFetching: getIsFetching(state)
-    }
-};
-
-export default connect(mapStateToProps, {})(Preloader);
+export default Preloader;
