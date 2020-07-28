@@ -9,8 +9,12 @@ export const PERMISSIONS = [
 ];
 
 export const INITIAL_STATE = {
-    dataPhoto : [],
-    currentPage: 1,
-    isFetching : false,
-    photoDetailStatus : false
+    photos: {
+        dataPhoto : [],
+        currentPage: 1
+    },
+    status: {
+        isFetching : false,
+        photoDetailStatus : false
+    }
 };
